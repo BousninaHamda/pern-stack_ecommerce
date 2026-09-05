@@ -5,7 +5,8 @@ import { createCategorySchema } from "../validations/category.validation";
 
 export const createCategory = async (req: Request, res: Response) => {
   try {
-    const category = await categoryService.create(req.body);
+    const validatedData = createCategorySchema.parse(req.body);
+    const category = await categoryService.create(validatedData);
 
     return res.status(201).json({
       success: true,

@@ -12,4 +12,8 @@ export const createCategorySchema = z.object({
   isActive: z.boolean().optional(),
 });
 
+export const updateCategorySchema = createCategorySchema.partial();
+
+export type UpdateCategoryInput = z.infer<typeof updateCategorySchema>;
+
 export type CreateCategoryInput = z.infer<typeof createCategorySchema>;
