@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import routes from "./routes";
 
 const app = express();
 
@@ -19,6 +20,9 @@ app.use(express.json());
 
 // Parse cookies
 app.use(cookieParser());
+
+// Import routes
+app.use("/api", routes);
 
 // ✅ Helmet with CORP set to "cross-origin" to allow cross-origin image loading
 app.use(
